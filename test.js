@@ -47,4 +47,15 @@ describe('Vending Machine', function () {
         });
     });
 
+    describe('Track value of multiple different-denomination coins inserted', function () {
+        it('value of multiple coins of different values', function () {
+            machine = new VendingMachine();
+            machine.balance += ((dime * 2) + (nickel * 3))
+            assert.strictEqual(35, machine.getBalance())
+        });
+    });
+
+
+
+
 });
