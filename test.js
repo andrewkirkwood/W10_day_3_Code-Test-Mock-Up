@@ -34,8 +34,17 @@ describe('Vending Machine', function () {
         assert.strictEqual(15, machine.getBalance())
         machine.balance += quarter
         assert.strictEqual(40, machine.getBalance())
+        machine.balance += dollar
+        assert.strictEqual(140, machine.getBalance())
       })
-
     })
+
+    describe('Track value of multiple same-denomination coins inserted', function () {
+        it('value of multiple coins of same value', function () {
+            machine = new VendingMachine();
+            machine.balance += (dime * 2)
+            assert.strictEqual(20, machine.getBalance())
+        });
+    });
 
 });
