@@ -2,10 +2,18 @@ var VendingMachine = function () {
     this.balance = 0;
 };
 
+const dime = 10
+const nickel = 5
+const quarter = 25
+const dollar = 100
+
 VendingMachine.prototype.getBalance = function () {
     return this.balance;
 };
 
+VendingMachine.prototype.getCoinValue = function () {
+    return this.coinValue;
+};
 let assert = require('assert');
 
 describe('Vending Machine', function () {
@@ -16,4 +24,18 @@ describe('Vending Machine', function () {
             assert.strictEqual(0, machine.getBalance())
         });
     });
+
+    describe('Tracks value of single coin inserted', function () {
+      it('value of coin', function() {
+        machine = new VendingMachine()
+        machine.balance += dime
+        assert.strictEqual(10, machine.getBalance())
+        machine.balance += nickel
+        assert.strictEqual(15, machine.getBalance())
+        machine.balance += quarter
+        assert.strictEqual(40, machine.getBalance())
+      })
+
+    })
+
 });
