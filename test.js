@@ -1,5 +1,6 @@
 var VendingMachine = function () {
     this.balance = 0;
+    this.coins = []
 };
 
 const dime = 10
@@ -11,9 +12,10 @@ VendingMachine.prototype.getBalance = function () {
     return this.balance;
 };
 
-VendingMachine.prototype.getCoinValue = function () {
-    return this.coinValue;
+VendingMachine.prototype.getTotalCoinValue = function () {
+    return this.coins;
 };
+
 let assert = require('assert');
 
 describe('Vending Machine', function () {
@@ -55,6 +57,14 @@ describe('Vending Machine', function () {
         });
     });
 
+    describe('Return exact coins inserted on request', function(){
+      it('machine returns value of all coins inserted', function () {
+          machine = new VendingMachine();
+          machine.coins.push(dime)
+          machine.coins.push(nickel)
+          assert.deepStrictEqual([10, 5], machine.getTotalCoinValue())
+      });
+    })
 
 
 
